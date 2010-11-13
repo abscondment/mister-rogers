@@ -13,12 +13,18 @@
         (str/split #"&" (request :query-string)))))
 
 (defn- hello-world [channel request]
-  (enqueue channel
-    {:status 200
-     :headers {"content-type" "text/html"}
-     :body (str
+  (let [params (query-map request)
+        point  [(Double/parseDouble (get params "lat"))
+                (Double/parseDouble (get params "lon"))]
+        n (Integer/parseInt (or (get params "n") "5"))]
+   (enqueue channel
+            {:status 200
+             :headers {"content-type" "text/html"}
+             :body (str
+                    (seq (kdtree/nearest-neighbor
+                          @fred.rogers/*tree*
+                          point
+                          n)))})))
 
-            )
-     }))
 
 (defn run [] (start-http-server hello-world {:port 8080}))
