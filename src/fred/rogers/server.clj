@@ -1,4 +1,4 @@
-(ns fred-rogers.server
+(ns fred.rogers.server
   (:require [clojure.contrib.string :as str]
             [kdtree :as kdtree])
   (:use [lamina core]
