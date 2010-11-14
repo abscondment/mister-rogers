@@ -1,12 +1,13 @@
 (ns fred.rogers)
+
+;; set up globals that need to be accessed by other libs
 (def *tree* (ref '()))
 
 (ns fred.rogers
-  (:require
-   [fred.rogers.arborist :as arborist]
-   [fred.rogers.server :as server]))
+  (:require [fred.rogers.arborist :as arborist]
+            [fred.rogers.server :as server]))
 
 (defn -main [& args]
-  (do
-    (arborist/update-tree "seattle-sample.dat")
-    (server/run)))
+  (let [config (load-file "config.clj")]
+    (do (arborist/service-tree (config :data-file) 10)
+        (server/run))))

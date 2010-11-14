@@ -10,9 +10,9 @@
      (assoc result key val))
    {}
    (map #(str/split #"=" %)
-        (str/split #"&" (request :query-string)))))
+        (str/split #"&" (or (request :query-string) "")))))
 
-(defn- hello-world [channel request]
+(defn- find-neighbors [channel request]
   (let [params (query-map request)
         point  [(Double/parseDouble (get params "lat"))
                 (Double/parseDouble (get params "lon"))]
@@ -26,5 +26,4 @@
                           point
                           n)))})))
 
-
-(defn run [] (start-http-server hello-world {:port 8080}))
+(defn run [] (start-http-server find-neighbors {:port 8080}))
