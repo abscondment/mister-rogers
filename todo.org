@@ -1,0 +1,24 @@
+#-*- mode: org -*-
+#+startup: overview
+#+startup: hidestars
+#+TODO: MAYBE | TODO | INPROGRESS | DONE
+
+TODOs for mister-rogers
+
+* For 1.0
+** TODO Write tests.
+** TODO Better config
+*** Figure out which aleph/netty options need to be exposed.
+**** timeouts? max connections?
+*** Allow config file to be specified from command line.
+** TODO Better request routing
+*** Define the REST api - should be fairly simple.
+*** Figure out if there's some good, lightweight existing library to use.
+** TODO Faster tree building
+*** Currently reads, converts to objects, makes tree. Instead, should read & instert raw values into tree. Let the tree library handle conversion.
+** MAYBE Incorporate upcoming kdtree updates
+*** API to Add/Remove from existing tree
+*** tree stats (depth/nodes/etc)?
+** MAYBE Disable asynchronous rebuild by default?
+* Future
+** MAYBE Return Clojure/Java objects via Netty's ObjectEcho protocol
