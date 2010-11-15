@@ -1,5 +1,5 @@
-(ns fred-rogers.test.core
-  (:use [fred-rogers.core] :reload)
+(ns mister-rogers.test.core
+  (:use [mister-rogers.core] :reload)
   (:use [clojure.test]))
 
 (deftest replace-me ;; FIXME: write

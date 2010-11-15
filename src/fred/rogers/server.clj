@@ -1,4 +1,4 @@
-(ns fred.rogers.server
+(ns mister.rogers.server
   (:require [clojure.contrib.string :as str]
             [kdtree :as kdtree])
   (:use [lamina core]
@@ -22,7 +22,7 @@
              :headers {"content-type" "text/html"}
              :body (str
                     (seq (kdtree/nearest-neighbor
-                          @fred.rogers/*tree*
+                          @mister.rogers/neighborhood
                           point
                           n)))})))
 

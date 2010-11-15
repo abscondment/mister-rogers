@@ -1,11 +1,11 @@
-(ns fred.rogers)
+(ns mister.rogers)
 
 ;; set up globals that need to be accessed by other libs
-(def *tree* (ref '()))
+(def neighborhood (ref '()))
 
-(ns fred.rogers
-  (:require [fred.rogers.arborist :as arborist]
-            [fred.rogers.server :as server])
+(ns mister.rogers
+  (:require [mister.rogers.arborist :as arborist]
+            [mister.rogers.server :as server])
   (:gen-class))
 
 (defn -main [& args]
