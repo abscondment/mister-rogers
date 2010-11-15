@@ -5,9 +5,13 @@
 
 (ns fred.rogers
   (:require [fred.rogers.arborist :as arborist]
-            [fred.rogers.server :as server]))
+            [fred.rogers.server :as server])
+  (:gen-class))
 
 (defn -main [& args]
   (let [config (load-file "config.clj")]
-    (do (arborist/service-tree (config :data-file) 10)
-        (server/run))))
+    (do
+                                        ; (arborist/service-tree (config :data-file) 10)
+      (arborist/update-tree (config :data-file))
+      (println "Starting server...")
+      (server/run))))
